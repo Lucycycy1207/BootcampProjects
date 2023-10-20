@@ -1,0 +1,11 @@
+Model Information:
+* title:	State Forest Information Kiosk
+* source:	https://sketchfab.com/3d-models/state-forest-information-kiosk-343bc200cc724290bd7a1d048064dbc1
+* author:	Ed Gonzalez-Tennant (https://sketchfab.com/edgonzaleztennant)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "State Forest Information Kiosk" (https://sketchfab.com/3d-models/state-forest-information-kiosk-343bc200cc724290bd7a1d048064dbc1) by Ed Gonzalez-Tennant (https://sketchfab.com/edgonzaleztennant) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
