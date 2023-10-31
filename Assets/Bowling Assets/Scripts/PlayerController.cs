@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ballOffset = ballSpawnPoint.position - throwingArrow.position;
-        StartThrow();
+        //StartThrow();
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         TryThrowBall();
     }
 
-    private void StartThrow()
+    public void StartThrow()
     {
         throwingArrowAnim.SetBool("Aiming", true);
         wasBallThrown = false;
