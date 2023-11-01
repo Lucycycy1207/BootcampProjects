@@ -55,4 +55,12 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Total Fallen Pins: " + count);
     }
+
+    public void ResetAllPins()
+    {
+        foreach (Pin pin in pins)
+        {
+            pin.ResetPin();
+        }
+    }
 }
