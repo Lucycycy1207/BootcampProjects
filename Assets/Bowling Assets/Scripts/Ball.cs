@@ -14,10 +14,9 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    //built in method
     private void OnCollisionEnter(Collision collision)
     {
         //Check for collision with ant object
@@ -25,16 +24,13 @@ public class Ball : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Pin"))
         {
-            Debug.Log("The object we collided with is " + collision.gameObject.name);
-
+            Debug.Log("The object we collided woith is " + collision.gameObject.name);
         }
-
     }
 
-    //built in method
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pit"))
+        if (other.CompareTag("Pit"))
         {
             gameManager.SetNextThrow();
 

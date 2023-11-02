@@ -8,31 +8,23 @@ public class PlayerController : MonoBehaviour
     public float arrowMinPosition = -0.25f;
     public float arrowMaxPosition = 0.25f;
     public Transform throwingArrow;
+    public Transform ballSpawnPoint;
     public float throwForce = 5.0f;
     public Animator throwingArrowAnim;
-    public Transform ballSpawnPoint;
-
 
     public Rigidbody[] balls;
-    public Rigidbody selectedBall;
+
+
     private float horizontalInput;
     private Vector3 ballOffset;
     private bool wasBallThrown;
-
-
+    private Rigidbody selectedBall;
     // Start is called before the first frame update
     void Start()
     {
         ballOffset = ballSpawnPoint.position - throwingArrow.position;
+
         //StartThrow();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        MoveArrowWithConstraints();
-        TryThrowBall();
     }
 
     public void StartThrow()
@@ -42,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
         //Spawn A New Ball When Start Throw is called
         int randomNumber = GetRandomNumber(0, balls.Length);
-        selectedBall = Instantiate(balls[randomNumber], ballSpawnPoint.position, Quaternion.identity);// quaternion: spawn without rotation
+        selectedBall = Instantiate(balls[randomNumber], ballSpawnPoint.position, Quaternion.identity);
 
     }
 
@@ -50,11 +42,24 @@ public class PlayerController : MonoBehaviour
     {
         return Random.Range(min, max);
     }
-    
+    // Update is called once per frame
+    void Update()
+    {
+        MoveArrowWithConstraints();
+        TryThrowBall();
+    }
+
+    private void MoveArrowWithoutConstraints()
+    {
+        //Moving without constraints
+        horizontalInput = Input.GetAxis("Horizontal");
+        throwingArrow.position += throwingArrow.transform.right * horizontalInput * playerMovementSpeed * Time.deltaTime;
+    }
+
     private void MoveArrowWithConstraints()
     {
         //Checks if ball has not yet been thrown
-        if (!wasBallThrown)
+        if (!wasBallThrown) //wasBallThrown == false
         {
             //Moving with constraints
             float movePosition = Input.GetAxis("Horizontal") * playerMovementSpeed * Time.deltaTime;
@@ -64,29 +69,20 @@ public class PlayerController : MonoBehaviour
                 throwingArrow.position.z
                 );
             //Set Ball Position based on Throwing Direction Position
-            selectedBall.position = throwingArrow.position + ballOffset;
-        }
-        else{
-
+            selectedBall.transform.position = throwingArrow.position + ballOffset;
         }
 
     }
 
+
     private void TryThrowBall()
     {
         //Throw the ball
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !wasBallThrown)
         {
             wasBallThrown = true;
             selectedBall.AddForce(throwingArrow.forward * throwForce, ForceMode.Impulse);
             throwingArrowAnim.SetBool("Aiming", false);
         }
-    }
-
-    private void MoveArrowWithoutConstraints()
-    {
-        //Moving without constraints
-        horizontalInput = Input.GetAxis("Horizontal");
-        throwingArrow.position += throwingArrow.transform.right * horizontalInput * playerMovementSpeed * Time.deltaTime;
     }
 }
