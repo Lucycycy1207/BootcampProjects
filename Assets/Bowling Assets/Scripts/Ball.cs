@@ -37,6 +37,10 @@ public class Ball : MonoBehaviour
             //Destroy Ball GameObject
             Destroy(gameObject);
         }
+        else if (other.CompareTag("CloseUpCam"))
+        {
+            gameManager.SwitchCam();
+        }
 
 
     }

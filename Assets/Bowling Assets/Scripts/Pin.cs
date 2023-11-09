@@ -25,7 +25,7 @@ public class Pin : MonoBehaviour
     void Update()
     {
         //Check if pin has fallen
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf)//the local active state
         {
             isFallen = Quaternion.Angle(startRotation, transform.localRotation) > pinFallAccuracy;
         }
