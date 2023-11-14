@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         int count = 0;
         foreach (Pin pin in pins)
         {
-            if (pin.isFallen)
+            if (pin.isFallen && pin.gameObject.activeSelf)
             {
                 count++;
                 pin.gameObject.SetActive(false);

@@ -99,8 +99,9 @@ public class FrameUI : MonoBehaviour
         txtThrow1.text = "";
         txtThrow2.text = "";
         txtTotal.text = "";
-
-        if (isFinalFrame)
+        if (frame == 10)
+        {
             txtThrow3.text = "";
+        }
     }
 }
