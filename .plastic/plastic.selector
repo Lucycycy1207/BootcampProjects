@@ -1,0 +1,4 @@
+repository "BootcampProjects@xinluchen@cloud"
+  path "/"
+    br "/main"
+    co "/main"
